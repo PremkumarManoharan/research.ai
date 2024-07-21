@@ -1,2 +1,11 @@
 fastapi
 uvicorn
+pydantic
+pymongo[srv]
+python-dotenv
+requests
+pypdf
+langchain_community
+langchain
+langchain_text_splitters
+pinecone-client
