@@ -15,13 +15,6 @@ app = FastAPI()
 
 client = get_mongo_client()
 
-# Schemas
-class Item(BaseModel):
-    text: str = None
-    is_done: bool = False
-
-
-items = []
 
 # test method
 @app.get("/")
@@ -48,7 +41,7 @@ async def post_pdf(request: Request, email: str, filename: str = Header()):
 
 
 
-@app.get("/pdf/retrieve")
+@app.get("/pdf/retrieve/{file_id}")
 async def get_pdf(file_id: str):
     file_id = ObjectId(str(file_id))
     file = retrieve_pdf(file_id)
