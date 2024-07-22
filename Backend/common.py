@@ -31,3 +31,14 @@ def retrieve_pdf(file_id):
     return file
 
     
+
+def get_pdfs_by_email(email: str):
+    client = get_mongo_client()
+    db = client['researchai']
+    fs = gridfs.GridFS(db)
+    print(f"fs PDFs for email: {fs}")
+    cursor = db.fs.files.find({"email": email}, {"_id": 1, "filename": 1})
+    pdfs = [{"id": str(doc["_id"]), "name": doc["filename"]} for doc in cursor if doc["filename"].endswith(".pdf")]
+    client.close()
+    
+    return pdfs

@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Request, HTTPException, Header
+from fastapi import FastAPI, Request, HTTPException, Header, Query
 from pydantic import BaseModel
-from common import get_mongo_client, upload_pdf, retrieve_pdf
+from common import get_mongo_client, upload_pdf, retrieve_pdf, get_pdfs_by_email
 from typing import Required
 import io
 from fastapi.responses import RedirectResponse
@@ -10,7 +10,6 @@ from vectordb.pdf_splitter import extract_text_from_pdf
 from vectordb.pinecone_util import connect_and_store_vector
 from langserve import add_routes
 from chain import chain as research_langChain_chain
-
 app = FastAPI()
 
 client = get_mongo_client()
@@ -54,3 +53,14 @@ async def redirect_root_to_docs():
 
 # Edit this to add the chain you want to add
 add_routes(app, research_langChain_chain, path="/query")
+
+
+@app.get("/getFiles")
+async def get_files_by_email(email: str = Query(...)):
+    print(email)
+    pdfs = get_pdfs_by_email(email)
+    
+    if not pdfs:
+        raise HTTPException(status_code=404, detail="No PDFs found for the given email")
+    
+    return pdfs
