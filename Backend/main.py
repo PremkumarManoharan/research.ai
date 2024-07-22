@@ -3,10 +3,13 @@ from pydantic import BaseModel
 from common import get_mongo_client, upload_pdf, retrieve_pdf
 from typing import Required
 import io
+from fastapi.responses import RedirectResponse
 from fastapi.responses import StreamingResponse
 from bson.objectid import ObjectId
 from vectordb.pdf_splitter import extract_text_from_pdf
 from vectordb.pinecone_util import connect_and_store_vector
+from langserve import add_routes
+from chain import chain as research_langChain_chain
 
 app = FastAPI()
 
@@ -51,4 +54,10 @@ async def get_pdf(file_id: str):
     file = retrieve_pdf(file_id)
     return StreamingResponse(io.BytesIO(file), media_type="application/pdf")
 
+@app.get("/langServe/docs")
+async def redirect_root_to_docs():
+    return RedirectResponse("/docs")
 
+
+# Edit this to add the chain you want to add
+add_routes(app, research_langChain_chain, path="/query")

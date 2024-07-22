@@ -8,4 +8,10 @@ pypdf
 langchain_community
 langchain
 langchain_text_splitters
+langchain-community
+langchain-core
+openai
 pinecone-client
+langsmith
+langserve
+sse_starlette
