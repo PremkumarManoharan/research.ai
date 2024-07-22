@@ -23,7 +23,7 @@ JINA_API_KEY = os.environ["JINA_API_KEY"]
 pinecone = PineconeClient(api_key=PINECONE_API_KEY,
                          environment=PINECONE_ENVIRONMENT)
 
-embeddings = embeddings = JinaEmbeddings(jina_api_key=JINA_API_KEY, model_name='jina-clip-v1')
+embeddings = JinaEmbeddings(jina_api_key=JINA_API_KEY, model_name='jina-clip-v1')
 vectorstore = Pinecone.from_existing_index(index_name=PINECONE_INDEX_NAME,
                                            embedding=embeddings)
 

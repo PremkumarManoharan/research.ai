@@ -20,7 +20,7 @@ def connect_and_store_vector(chunks, email, source_filename, source_file_id):
     """
     texts = []
     for chunk in chunks:
-        texts.append(chunk.page_content)
+        texts.append({"text": chunk.page_content})
     
     data = get_text_vectors(texts)
     vectors = []

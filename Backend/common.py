@@ -13,7 +13,6 @@ def get_mongo_client():
 
 def upload_pdf(file,filename, metadata):
     client = get_mongo_client()
-    print(client)
     db = client['researchai']
     fs = gridfs.GridFS(db)
     
