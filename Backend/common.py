@@ -42,3 +42,23 @@ def get_pdfs_by_email(email: str):
     client.close()
     
     return pdfs
+
+def insert_notes(note: str, email: str):
+    client = get_mongo_client()
+    db = client["researchai"]
+    collection = db["notes"]
+    collection.replace_one({"email": email}, {"content": note, "email": email}, upsert=True)
+    document = collection.find_one({"email": email}, {"_id": 1})
+    client.close()
+    
+    return document.get("_id")
+
+
+def get_notes_by_email(email: str):
+    client = get_mongo_client()
+    db = client["researchai"]
+    collection = db["notes"]
+    document = collection.find_one({"email": email})
+    client.close()
+    
+    return document

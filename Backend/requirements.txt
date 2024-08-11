@@ -15,3 +15,4 @@ pinecone-client
 langsmith
 langserve
 sse_starlette
+uvicorn
