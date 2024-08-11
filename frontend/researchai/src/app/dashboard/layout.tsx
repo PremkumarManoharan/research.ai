@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 function Layout({
@@ -5,7 +6,11 @@ function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div style={{ display: "flex", height: "100vh" }}>{children}</div>;
+  return (
+    <div style={{ display: "flex", height: "100vh", padding: 0 }}>
+      {children}
+    </div>
+  );
 }
 
 export default Layout;
