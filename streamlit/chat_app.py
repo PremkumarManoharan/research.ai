@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 
 # Initialize chat history
 if 'chat_history' not in st.session_state:
@@ -20,11 +21,23 @@ if st.button("Send"):
         # Add user message to chat history
         st.session_state['chat_history'].append({"role": "User", "text": user_input})
 
-        # Here, you could process the input and generate a response
-        # For this example, we'll just echo the user's input as the bot's response
-        bot_response = f"You said: {user_input}"
+        # Make an API call with the user's input
+        api_url = "http://127.0.0.1:8000/query/"  # Replace with your actual API endpoint
+        headers = {"Content-Type": "application/json"}
+        data = {"query": user_input,
+                "email": st.query_params.get("email", "")}
+
+        try:
+            response = requests.post(api_url, json=data, headers=headers)
+            response.raise_for_status() 
+            bot_response = response.json().get("response", "Sorry, I didn't understand that.")
+            print("bot_response", bot_response)
+        except requests.exceptions.RequestException as e:
+            bot_response = f"Error: {str(e)}"
+
+        # Add the bot's response to the chat history
         st.session_state['chat_history'].append({"role": "Bot", "text": bot_response})
 
         # Clear the input box after sending
-        st.session_state['input'] = ""
+        # st.session_state['input'] = ""
 
