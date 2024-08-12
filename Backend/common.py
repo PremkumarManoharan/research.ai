@@ -4,11 +4,15 @@ import os
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
+import certifi
+ca = certifi.where()
+
+
 
 load_dotenv()
 def get_mongo_client():
     uri = os.getenv("MONGO_URI")
-    client = MongoClient(uri, server_api=ServerApi('1'))
+    client = MongoClient(uri, server_api=ServerApi('1'),tlsCAFile=ca)
     return client
 
 def upload_pdf(file,filename, metadata):

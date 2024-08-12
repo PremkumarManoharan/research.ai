@@ -90,6 +90,7 @@ function NoteChatTabs() {
         <TabsContent className="h-screen bg-white" value="notes">
           <div className="w-full h-screen rounded-none pt-10">
             <BlockNoteView
+            theme="light"
               onChange={handleNoteUpdate}
               className=""
               editor={editor}
