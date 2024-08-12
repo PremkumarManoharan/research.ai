@@ -7,13 +7,7 @@ import requests
 from dotenv import load_dotenv
 load_dotenv()
 
-
-OPENAI_API_KEY = st.secrets["api_keys"]["OPENAI_API_KEY"]
-print(OPENAI_API_KEY)
-
 st.title("Document Reader")
-
-client = OpenAI(api_key=OPENAI_API_KEY)
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -26,7 +20,8 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 if prompt := st.chat_input("What is up?"):
-    api_url = "http://127.0.0.1:8000/query/"  # Replace with your actual API endpoint
+    # api_url = "http://127.0.0.1:8000/query/"  # Replace with your actual API endpoint
+    api_url = st.secrets["api_urls"]["API_URL"]
     headers = {"Content-Type": "application/json"}
     data = {"query": prompt,
                 "email": st.query_params.get("email", "")}

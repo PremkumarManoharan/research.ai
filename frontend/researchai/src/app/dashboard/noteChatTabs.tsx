@@ -16,6 +16,7 @@ function NoteChatTabs() {
   const email = getItem("email", "session");
   const changeCount = useRef(0);
   const [showChat, setShowChat] = useState(false);
+  //src={`https://document-reader.streamlit.app/?embed=true&email=${email}`}
 
   useEffect(() => {
     let email = getItem("email", "session");
@@ -101,7 +102,7 @@ function NoteChatTabs() {
       </Tabs>
       {console.log(showChat)}
       <iframe
-        src={`https://document-reader.streamlit.app?embed=true&email=${email}`}
+         src={`http://localhost:8501/?embed=true&email=${email}`}
         className={`w-full h-[96vh] ${showChat ? "" : "hidden"}`}
       ></iframe>
     </>
