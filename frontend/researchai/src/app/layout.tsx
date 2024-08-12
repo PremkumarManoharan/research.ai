@@ -15,7 +15,7 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "Research.ai",
   description:
-    "Research.ai: Transforming Reading into Understanding with AI Precision.",
+    "Research.ai: Transforming Reading into Understanding with AI Precision",
 };
 
 export default function RootLayout({

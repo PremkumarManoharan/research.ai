@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Request, HTTPException, Header, Query
+from fastapi import FastAPI, Request, HTTPException, Header, Query, status
 from pydantic import BaseModel
-from common import get_mongo_client, upload_pdf, retrieve_pdf, get_pdfs_by_email, insert_notes, get_notes_by_email, delete_pdf
+from common import get_mongo_client, upload_pdf, retrieve_pdf, get_pdfs_by_email, insert_notes, get_notes_by_email, delete_pdf, create_user
 from typing import Required
 import io
 from fastapi.responses import RedirectResponse
@@ -132,3 +132,19 @@ async def delete_pdf_method(file_id: str):
     if not isMongoDeleted or not isPineconeDeleted:
         raise HTTPException(status_code=400, detail="Error deleting PDF")
     return {"message": "PDF deleted successfully"}
+
+
+@app.post("/user")
+async def post_user(request: Request, response: Response):
+    user = await request.body()
+    user_str = user.decode("utf-8")
+    user_json = json.loads(user_str)
+    if not user_json["email"] or not user_json["name"]:
+        raise HTTPException(status_code=400, detail="Missing email or name")
+    result = create_user(user_json["email"], user_json["name"])
+
+    if result:
+        response.status_code = status.HTTP_201_CREATED
+        return {"message": "User Created Successfully"}
+    else:
+        return {"message": "User already exists"}

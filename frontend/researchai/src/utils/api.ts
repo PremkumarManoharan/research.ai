@@ -61,7 +61,6 @@ export const uploadPdf = async (
     return response.data;
   } catch (error) {
     console.error("Error posting data:", error);
-    throw error;
   }
 };
 
@@ -79,7 +78,6 @@ export const getPdfs = async (email: string): Promise<any> => {
     return [];
   } catch (error) {
     console.error("Error posting data:", error);
-    throw error;
   }
 };
 
@@ -95,7 +93,6 @@ export const getPdf = async (email: string, fileId: string): Promise<any> => {
     return [];
   } catch (error) {
     console.error("Error getting data:", error);
-    throw error;
   }
 };
 
@@ -105,7 +102,7 @@ interface GetNotesResponse {
   email: string;
 }
 
-export const getNotes = async (email: string): Promise<GetNotesResponse> => {
+export const getNotes = async (email: string): Promise<any> => {
   try {
     const response = await axiosInstance.get(`notes?email=${email}`, {
       responseType: "json",
@@ -122,7 +119,6 @@ export const getNotes = async (email: string): Promise<GetNotesResponse> => {
     };
   } catch (error) {
     console.error("Error getting data:", error);
-    throw error;
   }
 };
 
@@ -136,7 +132,32 @@ export const postNotes = async (email: string, notes: any) => {
     return [];
   } catch (error) {
     console.error("Error posting data:", error);
-    throw error;
+  }
+};
+
+export const deleteFile = async (fileId: string) => {
+  try {
+    const response = await axiosInstance.delete(`pdf/delete/${fileId}`);
+    console.log("Response:", response.data);
+    if (response.data) {
+      return response.data;
+    }
+    return [];
+  } catch (error) {
+    console.error("Error posting data:", error);
+  }
+};
+
+export const createUser = async (email: string, name: string) => {
+  try {
+    const response = await axiosInstance.post(`user`, { email, name });
+    console.log("Response:", response.data);
+    if (response.data) {
+      return response.data;
+    }
+    return [];
+  } catch (error) {
+    console.error("Error posting data:", error);
   }
 };
 

@@ -76,3 +76,15 @@ def delete_pdf(file_id: str):
     client.close()
     
     return True
+
+def create_user(email: str, name: str):
+    client = get_mongo_client()
+    db = client["researchai"]
+    collection = db["users"]
+    existing_user = collection.find_one({"email": email})
+    if existing_user:
+        return False
+    result = collection.insert_one({"email": email, "name": name})
+    print(result)
+    client.close()
+    return True

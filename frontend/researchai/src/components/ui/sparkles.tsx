@@ -18,7 +18,7 @@ type ParticlesProps = {
   particleColor?: string;
   particleDensity?: number;
 };
-export const SparklesCore = (props: ParticlesProps) => {
+export const SparklesCore = React.memo((props: ParticlesProps) => {
   const {
     id,
     className,
@@ -431,4 +431,4 @@ export const SparklesCore = (props: ParticlesProps) => {
       )}
     </motion.div>
   );
-};
+});

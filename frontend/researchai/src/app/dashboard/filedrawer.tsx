@@ -1,5 +1,5 @@
 "use client";
-import { ReloadIcon, CheckIcon } from "@radix-ui/react-icons";
+import { ReloadIcon, CheckIcon, FileIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +11,6 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 import FileUploadDropzone from "./fileUploadDropzone";
 import { useState } from "react";
@@ -69,12 +68,12 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
   return (
     <div className="h-screen grid grid-rows-[93%_7%]">
       <div>
-        <h4 className="bg-[#F1F5F9] pl-4 pb-4 pt-4 mb-4 text-md font-bold border-b">
+        <h4 className="bg-[#F1F5F9] pl-4 pb-4 pt-4 text-md font-bold border-b">
           Your Files
         </h4>
         <div className="h-96 w-100% rounded-none">
           <div className="">
-            {userFiles &&
+            {userFiles && userFiles?.length != 0 ? (
               userFiles.map((file) => (
                 <ListItemCard
                   key={file.id}
@@ -82,8 +81,15 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
                   currentFile={currentFile}
                   fileName={file.name}
                   fileId={file.id}
+                  userFiles={userFiles}
+                  setUserFiles={setUserFiles}
                 ></ListItemCard>
-              ))}
+              ))
+            ) : (
+              <div className="mt-[100%] text-slate-500 text-center">
+                <FileIcon className="inline mb-1" /> No files uploaded yet
+              </div>
+            )}
           </div>
         </div>
       </div>

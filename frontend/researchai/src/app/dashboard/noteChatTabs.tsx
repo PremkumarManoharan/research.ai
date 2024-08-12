@@ -22,7 +22,7 @@ function NoteChatTabs() {
 
     const grabNotes = async () => {
       let notes: any = await getNotes(email);
-      if (notes.content) {
+      if (notes?.content) {
         notes = JSON.parse(notes.content);
       } else {
         notes = [];
@@ -90,7 +90,7 @@ function NoteChatTabs() {
         <TabsContent className="h-screen bg-white" value="notes">
           <div className="w-full h-screen rounded-none pt-10">
             <BlockNoteView
-            theme="light"
+              theme="light"
               onChange={handleNoteUpdate}
               className=""
               editor={editor}
