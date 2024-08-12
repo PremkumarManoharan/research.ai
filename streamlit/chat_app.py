@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+OPENAI_API_KEY = st.secrets["api_keys"]["OPENAI_API_KEY"]
 print(OPENAI_API_KEY)
 
 st.title("Document Reader")
