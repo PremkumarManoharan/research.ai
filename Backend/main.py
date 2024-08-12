@@ -1,13 +1,13 @@
 from fastapi import FastAPI, Request, HTTPException, Header, Query
 from pydantic import BaseModel
-from common import get_mongo_client, upload_pdf, retrieve_pdf, get_pdfs_by_email, insert_notes, get_notes_by_email
+from common import get_mongo_client, upload_pdf, retrieve_pdf, get_pdfs_by_email, insert_notes, get_notes_by_email, delete_pdf
 from typing import Required
 import io
 from fastapi.responses import RedirectResponse
 from fastapi.responses import StreamingResponse
 from bson.objectid import ObjectId
 from vectordb.pdf_splitter import extract_text_from_pdf
-from vectordb.pinecone_util import connect_and_store_vector
+from vectordb.pinecone_util import connect_and_store_vector, delete_vecots_by_file_id
 from langserve import add_routes
 from chain import chain as research_langChain_chain
 from fastapi.middleware.cors import CORSMiddleware
@@ -126,9 +126,9 @@ async def get_notes(email: str):
 
 
 @app.delete("/pdf/delete/{file_id}")
-async def delete_pdf(file_id: str):
-    # Delete vectors from pinecone by file_id (metadata)
-    # Delete data from pinecone by file_id (metadata)
-    # Delete data from mongo by file_id
-    
+async def delete_pdf_method(file_id: str):
+    isMongoDeleted =  delete_pdf(file_id)
+    isPineconeDeleted = delete_vecots_by_file_id(file_id)
+    if not isMongoDeleted or not isPineconeDeleted:
+        raise HTTPException(status_code=400, detail="Error deleting PDF")
     return {"message": "PDF deleted successfully"}

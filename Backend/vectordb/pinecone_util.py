@@ -33,9 +33,27 @@ def connect_and_store_vector(chunks, email, source_filename, source_file_id):
             "text": chunk.page_content
         }
         values = data[i].get("embedding")
+        id = source_file_id+ str(uuid4())
         
-        vectors.append({"id": str(uuid4()), "values": values, "metadata": metadata})
+        vectors.append({"id": id, "values": values, "metadata": metadata})
     
     index.upsert(vectors)
 
 
+def delete_vecots_by_file_id(file_id: str):
+    """
+    Deletes all vectors associated with the given file_id.
+
+    Parameters:
+    file_id (str): The file_id associated with the vectors.
+
+    Returns:
+    bool: True if the vectors are successfully deleted, False otherwise.
+    """
+    response = None
+    for ids in index.list(prefix=file_id):
+        print(ids) # ['doc1#chunk1', 'doc1#chunk2', 'doc1#chunk3']
+        response = index.delete(ids=ids)
+
+        
+    return True

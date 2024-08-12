@@ -66,3 +66,13 @@ def get_notes_by_email(email: str):
     client.close()
     
     return document
+
+def delete_pdf(file_id: str):
+    client = get_mongo_client()
+    db = client["researchai"]
+    fs = gridfs.GridFS(db)
+    result = fs.delete(ObjectId(file_id))
+    
+    client.close()
+    
+    return True
