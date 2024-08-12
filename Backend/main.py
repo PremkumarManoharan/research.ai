@@ -13,6 +13,8 @@ from chain import chain as research_langChain_chain
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 import json
+import uvicorn
+
 
 
 app = FastAPI()
@@ -148,3 +150,7 @@ async def post_user(request: Request, response: Response):
         return {"message": "User Created Successfully"}
     else:
         return {"message": "User already exists"}
+
+
+if __name__ == "__main__":
+  uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
