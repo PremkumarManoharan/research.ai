@@ -12,6 +12,7 @@ from langserve import add_routes
 from chain import chain as research_langChain_chain
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
+import json
 
 
 app = FastAPI()
@@ -70,6 +71,25 @@ async def redirect_root_to_docs():
 # Edit this to add the chain you want to add
 add_routes(app, research_langChain_chain, path="/query")
 
+@app.post("/query")
+async def run_query(request: Request):
+    body = await request.body()
+    body = body.decode("utf-8")
+    body = json.loads(body)
+
+    if not body["email"] or not body["query"]:
+        raise HTTPException(status_code=400, detail="Missing query or email")
+    input_dict = {
+            "email": body["email"],
+        "query": body["query"]
+    }
+
+
+    result = research_langChain_chain.invoke(input_dict)         
+
+
+    return {"response": result}
+
 
 @app.get("/getFiles")
 async def get_files_by_email(email: str = Query(...)):
@@ -104,3 +124,12 @@ async def get_notes(email: str):
         raise HTTPException(status_code=404, detail="No notes found for the given email")
     responseBody = {**notes, '_id' : str(notes['_id'])}
     return responseBody
+
+
+@app.delete("/pdf/delete/{file_id}")
+async def delete_pdf(file_id: str):
+    # Delete vectors from pinecone by file_id (metadata)
+    # Delete data from pinecone by file_id (metadata)
+    # Delete data from mongo by file_id
+    
+    return {"message": "PDF deleted successfully"}
