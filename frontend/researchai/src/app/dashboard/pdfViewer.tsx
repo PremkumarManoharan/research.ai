@@ -1,11 +1,8 @@
-import exp from "constants";
-import { use, useState } from "react";
-import { Document, Page } from "react-pdf";
+import { useState } from "react";
 import { pdfjs } from "react-pdf";
 import { useEffect } from "react";
 import useStorage from "@/hooks/useStorage";
 import { getPdf } from "@/utils/api";
-import { get } from "http";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",

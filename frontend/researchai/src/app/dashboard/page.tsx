@@ -32,6 +32,11 @@ function Page() {
         />
       </div>
       <div style={{ flex: "0 0 50%", backgroundColor: "#ffffff" }}>
+        {currentFile?.name && (
+          <h4 className="bg-[#F1F5F9] pl-4 pb-4 pt-4 text-md font-bold border-b flex justify-center items-center">
+            {currentFile?.name}
+          </h4>
+        )}
         <PdfViewer currentFile={currentFile}></PdfViewer>
       </div>
       <div

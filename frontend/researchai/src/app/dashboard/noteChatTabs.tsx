@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import useStorage from "@/hooks/useStorage";
 import { getNotes, postNotes } from "@/utils/api";
 import { useToast } from "@/components/ui/use-toast";
-import { CheckIcon } from "@radix-ui/react-icons";
+import { MagicWandIcon } from "@radix-ui/react-icons";
 
 function NoteChatTabs() {
   const { toast } = useToast();
@@ -83,7 +83,8 @@ function NoteChatTabs() {
             value="chat"
             onClick={handleChatActive}
           >
-            Chat
+            <MagicWandIcon className="mr-2"></MagicWandIcon>{" "}
+            <span> Ask AI</span>
           </TabsTrigger>
         </TabsList>
         <TabsContent className="h-screen bg-white" value="notes">
