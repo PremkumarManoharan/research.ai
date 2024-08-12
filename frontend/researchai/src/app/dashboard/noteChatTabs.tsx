@@ -100,7 +100,7 @@ function NoteChatTabs() {
       </Tabs>
       {console.log(showChat)}
       <iframe
-        src="https://doc-chat-llm.streamlit.app/~/+/?embed=true#chatgpt-like-clone&embed=true"
+        src={`https://document-reader.streamlit.app?embed=true&email=${email}`}
         className={`w-full h-[96vh] ${showChat ? "" : "hidden"}`}
       ></iframe>
     </>
