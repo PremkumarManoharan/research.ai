@@ -14,6 +14,40 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+if "theme" not in st.session_state:
+    st.session_state.theme = "light"  # Default theme
+
+# Theme toggle button
+if st.button("Toggle Dark/Light Mode"):
+    # Switch between light and dark theme
+    st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
+
+# Apply the theme dynamically
+if st.session_state.theme == "light":
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #F0F2F6;
+            color: #000000;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+else:
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #1E1E1E;
+            color: #FFFFFF;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
