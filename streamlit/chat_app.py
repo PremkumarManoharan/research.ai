@@ -19,8 +19,8 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 if prompt := st.chat_input("What is up?"):
-    api_url = "http://127.0.0.1:8000/query/"  # Replace with your actual API endpoint
-    #api_url = st.secrets["api_urls"]["API_URL"]
+    # api_url = "https://backend-mu-topaz.vercel.app/query/"  # Replace with your actual API endpoint
+    api_url = st.secrets["api_urls"]["API_URL"]
     headers = {"Content-Type": "application/json"}
     data = {"query": prompt,
                 "email": st.query_params.get("email", "")}
