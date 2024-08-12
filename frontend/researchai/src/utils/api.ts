@@ -7,7 +7,7 @@ import axios, {
 } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:8000",
+  baseURL: "https://backend-mu-topaz.vercel.app",
   timeout: 10000,
   headers: {},
 });
