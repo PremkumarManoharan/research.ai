@@ -6,6 +6,13 @@ import requests
 from dotenv import load_dotenv
 load_dotenv()
 
+st.set_page_config(
+    page_title="Document Reader",
+    page_icon="📄",
+    layout="centered",
+    initial_sidebar_state="expanded",
+)
+
 st.title("Document Reader")
 
 if "openai_model" not in st.session_state:
@@ -14,12 +21,6 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-st.set_page_config(
-    page_title="Document Reader",
-    page_icon="📄",
-    layout="centered",
-    initial_sidebar_state="expanded",
-)
 
 # Initialize session state for theme if not set
 if "theme" not in st.session_state:
