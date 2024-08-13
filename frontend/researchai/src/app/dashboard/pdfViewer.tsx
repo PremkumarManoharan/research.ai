@@ -4,11 +4,6 @@ import { useEffect } from "react";
 import useStorage from "@/hooks/useStorage";
 import { getPdf } from "@/utils/api";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url
-).toString();
-
 interface PdfViewerProps {
   currentFile: any | null;
 }
