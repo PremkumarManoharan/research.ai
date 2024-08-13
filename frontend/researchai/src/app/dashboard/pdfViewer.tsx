@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { pdfjs } from "react-pdf";
 import { useEffect } from "react";
 import useStorage from "@/hooks/useStorage";
 import { getPdf } from "@/utils/api";
