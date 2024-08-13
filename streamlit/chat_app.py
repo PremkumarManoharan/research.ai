@@ -14,6 +14,13 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+st.set_page_config(
+    page_title="Document Reader",
+    page_icon="📄",
+    layout="centered",
+    initial_sidebar_state="expanded",
+)
+
 # Initialize session state for theme if not set
 if "theme" not in st.session_state:
     st.session_state.theme = "light"  # Default theme
@@ -54,7 +61,7 @@ else:
         """,
         unsafe_allow_html=True,
     )
-    
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
