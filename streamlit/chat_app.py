@@ -13,7 +13,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.title("Document Reader")
+# st.title("Document Reader")
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -25,43 +25,6 @@ if "messages" not in st.session_state:
 # Initialize session state for theme if not set
 if "theme" not in st.session_state:
     st.session_state.theme = "light"  # Default theme
-
-# Theme toggle button
-if st.button("Toggle Dark/Light Mode"):
-    st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
-    st.write(f"Current theme: {st.session_state.theme}")  # Debugging line
-
-# Apply the theme dynamically
-if st.session_state.theme == "light":
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #F0F2F6;
-            color: #000000;
-        }
-        .stText {
-            color: #000000;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-else:
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #1E1E1E;
-            color: #FFFFFF;
-        }
-        .stText {
-            color: #FFFFFF;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
 
 
 for message in st.session_state.messages:
