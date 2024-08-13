@@ -87,21 +87,21 @@ function NoteChatTabs() {
           </TabsTrigger>
         </TabsList>
         <TabsContent className="h-screen bg-white" value="notes">
-          {/* <div className="w-full h-screen rounded-none pt-10">
+          <div className="w-full h-screen rounded-none pt-10">
             <BlockNoteView
               theme="light"
               onChange={handleNoteUpdate}
               className=""
               editor={editor}
             />
-          </div> */}
+          </div>
         </TabsContent>
         <TabsContent value="chat" className="bg-white"></TabsContent>
       </Tabs>
-      {/* <iframe
+      <iframe
         src={`https://document-reader.streamlit.app/?embed=true&email=${email}`}
         className={`w-full h-[96vh] ${showChat ? "" : "hidden"}`}
-      ></iframe> */}
+      ></iframe>
     </>
   );
 }
