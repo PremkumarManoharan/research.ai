@@ -28,8 +28,8 @@ if "theme" not in st.session_state:
 
 # Theme toggle button
 if st.button("Toggle Dark/Light Mode"):
-    # Switch between light and dark theme
     st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
+    st.write(f"Current theme: {st.session_state.theme}")  # Debugging line
 
 # Apply the theme dynamically
 if st.session_state.theme == "light":
@@ -40,7 +40,7 @@ if st.session_state.theme == "light":
             background-color: #F0F2F6;
             color: #000000;
         }
-        .css-1v0mbdj {
+        .stText {
             color: #000000;
         }
         </style>
@@ -55,13 +55,14 @@ else:
             background-color: #1E1E1E;
             color: #FFFFFF;
         }
-        .css-1v0mbdj {
+        .stText {
             color: #FFFFFF;
         }
         </style>
         """,
         unsafe_allow_html=True,
     )
+
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
