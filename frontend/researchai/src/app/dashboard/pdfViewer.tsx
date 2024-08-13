@@ -1,3 +1,4 @@
+"use clinet";
 import { useState } from "react";
 import { useEffect } from "react";
 import useStorage from "@/hooks/useStorage";

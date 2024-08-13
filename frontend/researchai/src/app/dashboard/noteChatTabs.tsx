@@ -1,3 +1,4 @@
+"use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
@@ -8,6 +9,7 @@ import useStorage from "@/hooks/useStorage";
 import { getNotes, postNotes } from "@/utils/api";
 import { useToast } from "@/components/ui/use-toast";
 import { MagicWandIcon } from "@radix-ui/react-icons";
+import dynamic from "next/dynamic";
 
 function NoteChatTabs() {
   const { toast } = useToast();
@@ -28,7 +30,7 @@ function NoteChatTabs() {
         notes = [];
       }
 
-      const blocks = editor.document;
+      const blocks = editor?.document;
       if (blocks.length === 1) {
         console.log(notes);
         editor.insertBlocks(notes, blocks[0].id);
@@ -39,14 +41,12 @@ function NoteChatTabs() {
   }, []);
 
   const handleNoteUpdate = async () => {
-    const blocks = editor.document;
+    const blocks = editor?.document;
     // setItem("notes", JSON.stringify(blocks));
     changeCount.current = changeCount.current + 1;
-    console.log("Change count:", changeCount.current);
     if (changeCount.current > 10) {
       changeCount.current = 0;
       await postNotes(email, JSON.stringify(blocks));
-      console.log("Notes has been posted successfully");
       toast({
         title: "Auto Saved",
         duration: 2000,
@@ -60,7 +60,6 @@ function NoteChatTabs() {
   };
 
   const handleNoteActive = () => {
-    console.log("Note active");
     setShowChat(false);
   };
 
@@ -83,30 +82,31 @@ function NoteChatTabs() {
             value="chat"
             onClick={handleChatActive}
           >
-            <MagicWandIcon className="mr-2"></MagicWandIcon>{" "}
+            <MagicWandIcon className="mr-2"></MagicWandIcon>
             <span> Ask AI</span>
           </TabsTrigger>
         </TabsList>
         <TabsContent className="h-screen bg-white" value="notes">
-          <div className="w-full h-screen rounded-none pt-10">
+          {/* <div className="w-full h-screen rounded-none pt-10">
             <BlockNoteView
               theme="light"
               onChange={handleNoteUpdate}
               className=""
               editor={editor}
             />
-          </div>
+          </div> */}
         </TabsContent>
         <TabsContent value="chat" className="bg-white"></TabsContent>
       </Tabs>
-      {console.log(showChat)}
-      <iframe
-        //  src={`http://localhost:8501/?embed=true&email=${email}`}
-         src={`https://document-reader.streamlit.app/?embed=true&email=${email}`}
+      {/* <iframe
+        src={`https://document-reader.streamlit.app/?embed=true&email=${email}`}
         className={`w-full h-[96vh] ${showChat ? "" : "hidden"}`}
-      ></iframe>
+      ></iframe> */}
     </>
   );
 }
 
-export default NoteChatTabs;
+const NoteChatTabsNoSRR = dynamic(() => Promise.resolve(NoteChatTabs), {
+  ssr: false,
+});
+export default NoteChatTabsNoSRR;

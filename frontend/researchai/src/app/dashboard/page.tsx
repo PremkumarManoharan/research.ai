@@ -5,7 +5,7 @@ import { useState } from "react";
 import { getPdfs } from "@/utils/api";
 import useStorage from "@/hooks/useStorage";
 import PdfViewer from "./pdfViewer";
-import NoteChatTabs from "./noteChatTabs";
+import NoteChatTabsNoSRR from "./noteChatTabs";
 function Page() {
   const [userFiles, setUserFiles] = useState<any[] | null>(null);
   const [currentFile, setCurrentFile] = useState<any | null>(null);
@@ -43,7 +43,7 @@ function Page() {
         style={{ flex: "0 0 30%", backgroundColor: "white" }}
         className="border-l border-black"
       >
-        <NoteChatTabs></NoteChatTabs>
+        <NoteChatTabsNoSRR></NoteChatTabsNoSRR>
       </div>
     </>
   );

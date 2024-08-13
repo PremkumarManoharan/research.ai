@@ -432,3 +432,5 @@ export const SparklesCore = React.memo((props: ParticlesProps) => {
     </motion.div>
   );
 });
+
+SparklesCore.displayName = "SparklesCore";
