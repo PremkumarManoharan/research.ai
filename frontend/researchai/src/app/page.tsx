@@ -14,6 +14,8 @@ export default function Home() {
   const [name, setName] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isNameValid, setIsNameValid] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [buttonText, setButtonText] = useState("Get Started for Free! 👋");
 
   const router = useRouter();
 
@@ -36,9 +38,13 @@ export default function Home() {
   };
 
   const handleOnClick = async () => {
+    setIsLoading(true);
+    setButtonText("Creating your workspace...");
     setItem("email", email, "session");
     await createUser(email, name);
     router.push("/dashboard");
+    setIsLoading(false);
+    setButtonText("Get Started for Free! 👋");
   };
 
   return (
@@ -47,6 +53,7 @@ export default function Home() {
         <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
           Research.ai
         </h1>
+
         {/* <p className="text-slate-300 mb-1">
           Research.ai: Transforming Reading into Understanding with AI
           Precision. */}
@@ -83,13 +90,13 @@ export default function Home() {
         />
 
         <Button
-          disabled={isEmailValid || isNameValid}
+          disabled={isEmailValid || isNameValid || isLoading}
           variant="secondary"
           size="lg"
           className="mt-2 w-[20%]"
           onClick={handleOnClick}
         >
-          Get Started for Free! 👋
+          {buttonText}
         </Button>
         <div />
       </div>

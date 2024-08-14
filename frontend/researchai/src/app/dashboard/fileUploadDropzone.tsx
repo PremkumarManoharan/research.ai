@@ -46,9 +46,12 @@ const FileSvgDraw = () => {
 
 const FileUploadDropzone: React.FC<PdfUploadProps> = ({ files, setFiles }) => {
   const dropZoneConfig = {
-    maxFiles: 5,
+    accept: {
+      "application/pdf": [".pdf"],
+    },
+    maxFiles: 1,
     maxSize: 1024 * 1024 * 4,
-    multiple: true,
+    multiple: false,
   };
 
   return (

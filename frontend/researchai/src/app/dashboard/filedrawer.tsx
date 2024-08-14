@@ -17,6 +17,7 @@ import { useState } from "react";
 import { uploadPdf } from "@/utils/api";
 import useStorage from "./../../hooks/useStorage";
 import ListItemCard from "@/components/listItemCard";
+import { useToast } from "@/components/ui/use-toast";
 
 interface FileDrawerProps {
   userFiles: any[] | null;
@@ -31,6 +32,7 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
   currentFile,
   setCurrentFile,
 }) => {
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isUploadSuccess, setIsUploadSuccess] = useState(false);
   const { getItem } = useStorage();
@@ -40,11 +42,43 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
     console.log("Upload button clicked");
     setIsLoading(true);
     if (files && files[0]) {
-      let response = await uploadPdf(files[0], {
+      let { data, status } = await uploadPdf(files[0], {
         email,
         filename: files[0].name,
       });
-      const fileId: string = response.file_id;
+
+      if (status == 500) {
+        setIsLoading(false);
+        toast({
+          title: "❌ Service not available. Try again later",
+          duration: 2000,
+          className: "",
+        });
+        return;
+      }
+
+      if (status == undefined) {
+        setIsLoading(false);
+        toast({
+          title: "❌ Timed out. Try Smaller files",
+          duration: 2000,
+          className: "",
+        });
+        return;
+      }
+
+      if (status != 200) {
+        setIsLoading(false);
+        toast({
+          title: "❌ Failed to upload, try again",
+          duration: 2000,
+          className: "",
+        });
+        return;
+      }
+      console.log(data);
+
+      const fileId: string = data.file_id;
       let temp = userFiles || [];
       temp.push({ name: files[0].name, id: fileId });
       setUserFiles(temp);

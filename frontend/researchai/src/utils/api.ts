@@ -48,7 +48,7 @@ export const uploadPdf = async (
 ): Promise<any> => {
   try {
     const arrayBuffer = await file.arrayBuffer();
-    const response = await axiosInstance.post(
+    const response: AxiosResponse = await axiosInstance.post(
       `/pdf/upload?email=${queryParameters.email}`,
       arrayBuffer,
       {
@@ -56,11 +56,13 @@ export const uploadPdf = async (
           "Content-Type": "application/pdf",
           filename: queryParameters.filename,
         },
+        timeout: 20000,
       }
     );
-    return response.data;
+    console.log(response.status);
+    return { data: response.data, status: response.status };
   } catch (error) {
-    console.error("Error posting data:", error);
+    return { failerror: error };
   }
 };
 
