@@ -99,7 +99,7 @@ function NoteChatTabs() {
         <TabsContent value="chat" className="bg-white"></TabsContent>
       </Tabs>
       <iframe
-        src={`https://document-reader.streamlit.app/?embed=true&email=${email}`}
+        src={`https://researchai-7fwqgwsqvshzpvpqwsnqnm.streamlit.app/?embed=true&email=${email}`}
         className={`w-full h-[96vh] ${showChat ? "" : "hidden"}`}
       ></iframe>
     </>
