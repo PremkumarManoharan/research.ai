@@ -43,8 +43,8 @@ export default function Home() {
     setItem("email", email, "session");
     await createUser(email, name);
     router.push("/dashboard");
-    setIsLoading(false);
-    setButtonText("Get Started for Free! 👋");
+    // setIsLoading(false);
+    // setButtonText("Get Started for Free! 👋");
   };
 
   return (
