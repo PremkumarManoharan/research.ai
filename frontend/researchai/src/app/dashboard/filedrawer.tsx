@@ -149,7 +149,7 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
               </DialogClose>
               <Button
                 className={`${isUploadSuccess ? "bg-[#007a2f]" : ""}`}
-                disabled={isLoading}
+                disabled={isLoading || !files || files?.length == 0}
                 onClick={handleOnClickUpload}
               >
                 <ReloadIcon
