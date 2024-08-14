@@ -30,10 +30,10 @@ if "theme" not in st.session_state:
 
 for message in st.session_state.messages:
     if message["role"] == "user":
-        with st.chat_message(message["role"], avatar="😂"):
+        with st.chat_message(message["role"], avatar="👤"):
             st.markdown(message["content"])
     else:
-        with st.chat_message(message["role"], avatar="👩‍🎤"):
+        with st.chat_message(message["role"], avatar="📝"):
             st.markdown(message["content"])
 
 if prompt := st.chat_input("What is name of the Document I have?"):
