@@ -13,6 +13,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+
 # st.title("Document Reader")
 
 if "openai_model" not in st.session_state:
@@ -28,32 +29,37 @@ if "theme" not in st.session_state:
 
 
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+    if message["role"] == "user":
+        with st.chat_message(message["role"], avatar="😂"):
+            st.markdown(message["content"])
+    else:
+        with st.chat_message(message["role"], avatar="👩‍🎤"):
+            st.markdown(message["content"])
 
-if prompt := st.chat_input("What is up?"):
-    # api_url = "https://backend-mu-topaz.vercel.app/query/"  # Replace with your actual API endpoint
-    api_url = st.secrets["api_urls"]["API_URL"]
+if prompt := st.chat_input("What is name of the Document I have?"):
+    # api_url = "https://backend-mu-topaz.vercel.app/query"  # Replace with your actual API endpoint
+    api_url = st.secrets["API_URL"]
     headers = {"Content-Type": "application/json"}
     data = {"query": prompt,
                 "email": st.query_params.get("email", "")}
-    print(data)
-
-    try:
-        response = requests.post(api_url, json=data, headers=headers)
-        response.raise_for_status() 
-        bot_response = response.json().get("response", "Sorry, I didn't understand that.")
-        print("bot_response", bot_response)
-    except requests.exceptions.RequestException as e:
-        bot_response = f"Error: {str(e)}"
-
-
+    
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
+    with st.chat_message("user", avatar="👤"):
         st.markdown(prompt)
+    with st.spinner("Processing..."):
+
+        try:
+            response = requests.post(api_url, json=data, headers=headers)
+            response.raise_for_status() 
+            bot_response = response.json().get("response", "Sorry, I didn't understand that.")
+        except requests.exceptions.RequestException as e:
+            bot_response = f"Error: {str(e)}"
+
+
+  
 
     st.session_state.messages.append({"role": "assistant", "content": bot_response})
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="📝"):
         st.markdown(bot_response)
 
 
