@@ -1,36 +1,119 @@
-# FastAPI Project
+# Research AI project
 
-This project is a web API built with FastAPI. FastAPI is a modern, fast (high-performance) web framework for building APIs with Python 3.7+ based on standard Python type hints.
+Research.AI is an innovative platform designed to enhance the research process by leveraging advanced AI capabilities. The platform allows users to upload documents, which are then automatically split, indexed, and stored in a vector database. This enables powerful similarity searches, facilitating the use of Retrieval-Augmented Generation (RAG) models by large language models (LLMs) to efficiently answer user queries.
 
-## Installation
+Users can seamlessly upload various files, which are then made fully accessible for reading and annotation. As users engage with the content, they can create notes, highlight key sections, and ask questions in real-time. Whether it's locating a specific part of the document, understanding a complex term, or delving deeper into a topic, Research.AI provides precise and contextually relevant responses, making it an invaluable tool for researchers, students, and professionals alike.
 
-1. **Clone the repository:**
+Access our product here: https://research-ai-pi.vercel.app/
 
-    ```bash
-    git clone https://github.com/varun-jayakumar/research.ai.git
-    ```
+## Installation and Start-up
 
-2. **Create and activate a virtual environment:**
+1.  **Clone the repository:**
 
-    ```bash
-    python3 -m venv env
-    source env/bin/activate   # On Windows, use `env\Scripts\activate`
-    ```
+```bash
+git clone https://github.com/varun-jayakumar/research.ai.git
+```
 
-3. **Install the dependencies:**
+### Frontend
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```
+cd frontend/ research.ai/
+npm install
+npm run dev
+```
 
-## Running the App
+The frontend will be served at http://localhost:3000
 
-1. **Start the FastAPI server:**
+### Backend
 
-    ```bash
-    uvicorn main:app --reload
-    ```
+- Make sure you have python 3.1x installed in your system
 
-    - `main` is the name of your Python file (e.g., `main.py`).
-    - `app` is the name of the FastAPI instance in your Python file.
-    - `--reload` makes the server restart after code changes. Use this only in development.
+```
+cd Backend
+python3 -m venv venv
+source ./venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+The frontend will be served at http://localhost:8000
+
+### Streamlit
+
+- Make sure you have python 3.1x installed in your system
+
+```
+cd streamlit
+python3 -m venv venv
+source ./venv/bin/activate
+pip install -r requirements.txt
+streamlit run chat_app.py
+```
+
+Streamlit is served at http://localhost:8501
+
+### .env
+
+For the backend to use required services we need to setup a .env file
+
+```
+cd Backend
+touch .env
+vi .env
+
+# MONGO_URI=""
+# JINA_API_KEY=""
+# JINA_API_ENDPOINT=""
+# PINECONE_API_KEY=""
+# PINECONE_ENVIRONMENT = ""
+# PINECONE_INDEX_NAME = ""
+# JINA_API_KEY = ""
+# OPENAI_API_KEY=""
+# LANGCHAIN_TRACING_V2=""
+# LANGCHAIN_PROJECT=""
+# LANGCHAIN_ENDPOINT=""
+# LANGCHAIN_API_KEY=""
+```
+
+# Documentation on fine-tuning:
+
+The LLM model used by the chat-app is a fine-tuned version of chat-gpt-4o-mini
+
+The process of fine tuning is outlined in the following google colab doc:
+https://colab.research.google.com/drive/1QIkKdJDgMeh-jjMSxghfrzFuqF48oqbX?usp=sharing
+
+The guidelines above is followed to finetune our model:
+
+the data and code used can be found inside `fine-tuning` folder
+
+# Feature of the Application
+
+| Feature                                                                                      | status |
+| -------------------------------------------------------------------------------------------- | ------ |
+| Upload a PDF and index on pinecone on the fly                                                | Done   |
+| Ability to Read The PDF by selecting from file drawer                                        | Done   |
+| Ability to make Notes on a rich text editor Across all PDF that can be retrieved at any time | Done   |
+| Ability to ask questions on the uploaded pdf and and be the users are isolated               | Done   |
+
+## Work in Progress
+
+| Feature                                                                                                                | status     |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------- |
+| Ability to show definition when a user highlight and press a shortcut for show the meaning on a tooltip                | Inprogress |
+| When asked a question the response has the answer and also a source link (the page of the file the answer was found at | Inprogress |
+
+## Future Work
+
+| Feature                                                                                      | Status      |
+| -------------------------------------------------------------------------------------------- | ----------- |
+| Ability for the user to provide links and read the webpage and also questions on the webpage | Not Started |
+
+We are looking for feature requests and feedback let us!
+
+you can contact contributos of the project at:
+
+## The Team
+
+Varun Jayakumar - jayakumar.va@northeastern.edu
+Prem Kumar - raghavamanoharan.p@northeastern.edu
+Aditya Mehta - mehta.adit@northeastern.edu
