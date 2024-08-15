@@ -15,11 +15,11 @@ def extract_text_from_pdf(data_file):
     list: An array of text extracted from the PDF.
     """
 
-    with open("./temp/current.pdf", 'wb') as file:
+    with open("/tmp/current.pdf", 'wb') as file:
         file.write(data_file)
 
     # Load the PDF document
-    document_loader = PyPDFLoader("./temp/current.pdf")
+    document_loader = PyPDFLoader("/tmp/current.pdf")
     loader = document_loader.load()
 
 
@@ -31,7 +31,7 @@ def extract_text_from_pdf(data_file):
         is_separator_regex=False,
     )
     chunks = text_splitter.split_documents(loader)
-    os.remove("./temp/current.pdf")
+    os.remove("/tmp/current.pdf")
 
 
     return chunks
