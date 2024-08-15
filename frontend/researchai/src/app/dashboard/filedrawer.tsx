@@ -103,7 +103,7 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
     <div className="h-screen grid grid-rows-[93%_7%]">
       <div>
         <h4 className="bg-[#F1F5F9] pl-4 pb-4 pt-4 text-md font-bold border-b">
-          Your Files
+          Your File
         </h4>
         <div className="h-96 w-100% rounded-none">
           <div className="">
@@ -136,6 +136,9 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
           <DialogContent>
             <DialogHeader>
               <DialogTitle className="p-1">Upload Files</DialogTitle>
+              <p className="text-sm italic text-slate-600">
+                Only one file at a time (max. 40MB)
+              </p>
               <FileUploadDropzone
                 files={files}
                 setFiles={setFiles}

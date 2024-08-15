@@ -1,0 +1,36 @@
+Num examples: 30
+First example:
+{'role': 'system', 'content': "You are an AI assistant that provides information based on the user's context or explains the meaning of a given term."}
+{'role': 'user', 'content': 'Question: What is the capital of Germany?\nContext: None'}
+{'role': 'assistant', 'content': 'Answer: The capital of Germany is Berlin.\nSource: Not found in provided context.\nNote: The information requested is not available in the provided context.'}
+No errors found
+Num examples missing system message: 0
+Num examples missing user message: 0
+
+#### Distribution of num_messages_per_example:
+min / max: 3, 3
+mean / median: 3.0, 3.0
+p5 / p95: 3.0, 3.0
+
+#### Distribution of num_total_tokens_per_example:
+min / max: 65, 138
+mean / median: 112.2, 121.5
+p5 / p95: 66.35, 133.55
+
+#### Distribution of num_assistant_tokens_per_example:
+min / max: 22, 49
+mean / median: 33.36666666666667, 33.0
+p5 / p95: 25.45, 44.19999999999999
+Dataset has ~3366 tokens that will be charged for during training
+By default, you'll train for 3 epochs on this dataset
+By default, you'll be charged for ~10098 tokens
+FileObject(id='file-PP8lmDpxKpX5cbJp5XiHFsk7', bytes=19112, created_at=1723677853, filename='dataset.jsonl', object='file', purpose='fine-tune', status='processed', status_details=None)
+FineTuningJob(id='ftjob-42c8aCIY2lZaVB0dwRVcOQiT', created_at=1723677881, error=Error(code=None, message=None, param=None), fine_tuned_model=None, finished_at=None, hyperparameters=Hyperparameters(n_epochs='auto', batch_size='auto', learning_rate_multiplier='auto'), model='gpt-4o-mini-2024-07-18', object='fine_tuning.job', organization_id='org-OMvBqYEQFSe2xqMKQoFupIOJ', result_files=[], seed=496654908, status='validating_files', trained_tokens=None, training_file='file-PP8lmDpxKpX5cbJp5XiHFsk7', validation_file=None, estimated_finish=None, integrations=[], user_provided_suffix=None)
+
+attempt 2:
+
+FileObject(id='file-K5XZEg06J24psfbBfcFmGJEb', bytes=18384, created_at=1723678334, filename='dataset.jsonl', object='file', purpose='fine-tune', status='processed', status_details=None)
+FineTuningJob(id='ftjob-FoxA1pWp6tiQrvdVYmqsN1LV', created_at=1723678336, error=Error(code=None, message=None, param=None), fine_tuned_model=None, finished_at=None, hyperparameters=Hyperparameters(n_epochs='auto', batch_size='auto', learning_rate_multiplier='auto'), model='gpt-4o-mini-2024-07-18', object='fine_tuning.job', organization_id='org-OMvBqYEQFSe2xqMKQoFupIOJ', result_files=[], seed=452973132, status='validating_files', trained_tokens=None, training_file='file-PP8lmDpxKpX5cbJp5XiHFsk7', validation_file=None, estimated_finish=None, integrations=[], user_provided_suffix=None)
+FileObject(id='file-ZGisUKeSzyRf87I9jvQ14OKV', bytes=18434, created_at=1723678677, filename='dataset.jsonl', object='file', purpose='fine-tune', status='processed', status_details=None)
+FineTuningJob(id='ftjob-XrOAqM15QuucM8nqXPeFVXq4', created_at=1723678679, error=Error(code=None, message=None, param=None), fine_tuned_model=None, finished_at=None, hyperparameters=Hyperparameters(n_epochs='auto', batch_size='auto', learning_rate_multiplier='auto'), model='gpt-4o-mini-2024-07-18', object='fine_tuning.job', organization_id='org-OMvBqYEQFSe2xqMKQoFupIOJ', result_files=[], seed=173063741, status='validating_files', trained_tokens=None, training_file='file-PP8lmDpxKpX5cbJp5XiHFsk7', validation_file=None, estimated_finish=None, integrations=[], user_provided_suffix=None)
+FineTuningJob(id='ftjob-2zabDBDFggpMIlcMwmfeOZfg', created_at=1723678732, error=Error(code=None, message=None, param=None), fine_tuned_model=None, finished_at=None, hyperparameters=Hyperparameters(n_epochs='auto', batch_size='auto', learning_rate_multiplier='auto'), model='gpt-4o-mini-2024-07-18', object='fine_tuning.job', organization_id='org-OMvBqYEQFSe2xqMKQoFupIOJ', result_files=[], seed=2146195719, status='validating_files', trained_tokens=None, training_file='file-ZGisUKeSzyRf87I9jvQ14OKV', validation_file=None, estimated_finish=None, integrations=[], user_provided_suffix=None)

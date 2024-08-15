@@ -32,14 +32,14 @@ vectorstore = Pinecone.from_existing_index(index_name=PINECONE_INDEX_NAME,
 # retriever = vectorstore.as_retriever(search_kwargs={'filter': {'email':'summa@gmail.com'}})
 # RAG prompt
 template = """Answer the question based only on the following context:
-{context}
+Context: {context}
 Question: {question}
 """
 prompt = ChatPromptTemplate.from_template(template)
 
 # RAG
 model = ChatOpenAI(temperature=0, 
-                   model="gpt-3.5-turbo")
+                   model="gpt-4o-mini")
 
 def create_retriever(email: str, query: str):
     # return vectorstore.as_retriever(search_kwargs={'filter': {'email': email}})

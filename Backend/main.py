@@ -27,7 +27,6 @@ app.add_middleware(
 )
 
 
-client = get_mongo_client()
 
 
 # test method
@@ -40,13 +39,12 @@ def test():
 async def post_pdf(request: Request, email: str, filename: str = Header()):
     if not email or not filename:
         raise HTTPException(status_code=400, detail="Email is required")
-    
-    if not request.body():
+    file_content = await request.body()
+    if not file_content:
         raise HTTPException(status_code=400, detail="No file attached in body")
     
     # split pdf to chunks and index as pdfs
     
-    file_content = await request.body()
     if(file_content):
         chunks = extract_text_from_pdf(file_content)
         file_id = upload_pdf(file_content, filename, {"email": email})

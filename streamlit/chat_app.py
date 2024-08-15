@@ -16,8 +16,8 @@ st.set_page_config(
 
 st.title("Your reading assistant  📖")
 
-if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+# if "openai_model" not in st.session_state:
+#     st.session_state["openai_model"] = "gpt-3.5-turbo"
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -37,8 +37,8 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 if prompt := st.chat_input("What is name of the Document I have?"):
-    # api_url = "https://backend-mu-topaz.vercel.app/query"  # Replace with your actual API endpoint
-    api_url = st.secrets["API_URL"]
+    api_url = "http://localhost:8000/query"  # Replace with your actual API endpoint
+    # api_url = st.secrets["API_URL"]
     headers = {"Content-Type": "application/json"}
     data = {"query": prompt,
                 "email": st.query_params.get("email", "")}

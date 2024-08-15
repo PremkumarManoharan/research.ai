@@ -7,7 +7,7 @@ import axios, {
 } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://backend-mu-topaz.vercel.app",
+  baseURL: "research-ai-backend.vercel.app",
   timeout: 10000,
   headers: {},
 });
@@ -56,7 +56,7 @@ export const uploadPdf = async (
           "Content-Type": "application/pdf",
           filename: queryParameters.filename,
         },
-        timeout: 20000,
+        timeout: 50000,
       }
     );
     console.log(response.status);

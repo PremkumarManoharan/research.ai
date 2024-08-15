@@ -50,7 +50,7 @@ const FileUploadDropzone: React.FC<PdfUploadProps> = ({ files, setFiles }) => {
       "application/pdf": [".pdf"],
     },
     maxFiles: 1,
-    maxSize: 1024 * 1024 * 4,
+    max_file_size: 40 * 1024 * 1024,
     multiple: false,
   };
 

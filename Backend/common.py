@@ -12,7 +12,7 @@ ca = certifi.where()
 load_dotenv()
 def get_mongo_client():
     uri = os.getenv("MONGO_URI")
-    client = MongoClient(uri, server_api=ServerApi('1'),tlsCAFile=ca)
+    client = MongoClient(uri, server_api=ServerApi('1'))
     return client
 
 def upload_pdf(file,filename, metadata):
