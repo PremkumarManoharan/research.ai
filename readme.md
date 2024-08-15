@@ -147,7 +147,7 @@ the data and code used can be found inside `fine-tuning` folder
 
 We are looking for feature requests and feedback let us!
 
-you can contact contributos of the project at:
+you can contact contributors of the project at:
 
 ## The Team
 
