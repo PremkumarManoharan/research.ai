@@ -7,7 +7,7 @@ import axios, {
 } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "research-ai-backend.vercel.app",
+  baseURL: "https://research-ai-backend.vercel.app",
   timeout: 10000,
   headers: {},
 });

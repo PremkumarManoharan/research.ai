@@ -38,6 +38,7 @@ def retrieve_pdf(file_id):
 
 def get_pdfs_by_email(email: str):
     client = get_mongo_client()
+    print(email)
     db = client['researchai']
     fs = gridfs.GridFS(db)
     print(f"fs PDFs for email: {fs}")

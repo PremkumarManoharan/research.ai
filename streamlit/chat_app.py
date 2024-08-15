@@ -37,7 +37,7 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 if prompt := st.chat_input("What is name of the Document I have?"):
-    api_url = "research-ai-backend.vercel.app/query"  # Replace with your actual API endpoint
+    api_url = "https://research-ai-backend.vercel.app/query"  # Replace with your actual API endpoint
     # api_url = st.secrets["API_URL"]
     headers = {"Content-Type": "application/json"}
     data = {"query": prompt,
