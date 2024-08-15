@@ -1,3 +1,35 @@
+# Submission Info
+
+## Team members
+
+Varun Bharathi Jayakumar (002752810)
+LinkedIn: https://www.linkedin.com/in/varun-bharathi-j/
+Github: https://github.com/varun-jayakumar
+jayakumar.va@northeastern.edu
+Prem Kumar Raghava Manoharan (002726784)
+Linkedin: https://www.linkedin.com/in/premkumar-rm/
+Github: https://github.com/PremkumarManoharan
+raghavamanoharan.p@northeastern.edu
+Aditya Mehta (002775464)
+Linkedin: https://www.linkedin.com/in/aditya-mehta98/
+Github:https://github.com/adityamehta35
+mehta.adit@northeastern.edu
+
+## Demonstration video link
+
+https://www.loom.com/share/d099c707fb7042e59c1109a07405fed3?sid=96b996d4-7596-4231-9b55-7121180e1e77
+
+## Project deployment URL (try it out)
+
+- our team is actively working on making it better and bring it to market
+  https://research-ai-pi.vercel.app/
+
+## Pdf submission
+
+https://github.com/varun-jayakumar/research.ai/blob/main/final_project_pdf.pdf
+
+Download to view it
+
 # Research AI project
 
 Research.AI is an innovative platform designed to enhance the research process by leveraging advanced AI capabilities. The platform allows users to upload documents, which are then automatically split, indexed, and stored in a vector database. This enables powerful similarity searches, facilitating the use of Retrieval-Augmented Generation (RAG) models by large language models (LLMs) to efficiently answer user queries.
