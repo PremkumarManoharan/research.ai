@@ -114,6 +114,6 @@ you can contact contributos of the project at:
 
 ## The Team
 
-Varun Jayakumar - jayakumar.va@northeastern.edu
-Prem Kumar - raghavamanoharan.p@northeastern.edu
-Aditya Mehta - mehta.adit@northeastern.edu
+- Varun Jayakumar - jayakumar.va@northeastern.edu
+- Prem Kumar - raghavamanoharan.p@northeastern.edu
+- Aditya Mehta - mehta.adit@northeastern.edu
