@@ -137,7 +137,7 @@ const FileDrawer: React.FC<FileDrawerProps> = ({
             <DialogHeader>
               <DialogTitle className="p-1">Upload Files</DialogTitle>
               <p className="text-sm italic text-slate-600">
-                Only one file at a time (max. 40MB)
+                Only one file at a time (max. 5MB)
               </p>
               <FileUploadDropzone
                 files={files}

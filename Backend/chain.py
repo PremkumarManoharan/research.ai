@@ -39,7 +39,7 @@ prompt = ChatPromptTemplate.from_template(template)
 
 # RAG
 model = ChatOpenAI(temperature=0, 
-                   model="gpt-4o-mini")
+                   model="gpt-3.5-turbo")
 
 def create_retriever(email: str, query: str):
     # return vectorstore.as_retriever(search_kwargs={'filter': {'email': email}})
