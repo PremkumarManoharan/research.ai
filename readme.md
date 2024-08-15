@@ -2,18 +2,23 @@
 
 ## Team members
 
-Varun Bharathi Jayakumar (002752810)
-LinkedIn: https://www.linkedin.com/in/varun-bharathi-j/
-Github: https://github.com/varun-jayakumar
-jayakumar.va@northeastern.edu
-Prem Kumar Raghava Manoharan (002726784)
-Linkedin: https://www.linkedin.com/in/premkumar-rm/
-Github: https://github.com/PremkumarManoharan
-raghavamanoharan.p@northeastern.edu
-Aditya Mehta (002775464)
-Linkedin: https://www.linkedin.com/in/aditya-mehta98/
-Github:https://github.com/adityamehta35
-mehta.adit@northeastern.edu
+- Varun Bharathi Jayakumar (002752810)
+
+  LinkedIn: https://www.linkedin.com/in/varun-bharathi-j/
+  Github: https://github.com/varun-jayakumar
+  jayakumar.va@northeastern.edu
+
+- Prem Kumar Raghava Manoharan (002726784)
+
+  Linkedin: https://www.linkedin.com/in/premkumar-rm/
+  Github: https://github.com/PremkumarManoharan
+  raghavamanoharan.p@northeastern.edu
+
+- Aditya Mehta (002775464)
+
+  Linkedin: https://www.linkedin.com/in/aditya-mehta98/
+  Github:https://github.com/adityamehta35
+  mehta.adit@northeastern.edu
 
 ## Demonstration video link
 
